@@ -48,7 +48,12 @@ class RectangleHelper {
     }
 
     /**
-     *
+     * Create two {@link Map}s that contain sets of points that share either the same x or same y
+     * coordinate (one map for each).  Then for each point in {@code pointArray}, use the {@link Map}s
+     * to obtain a list of possible adjacent vertices of a possible rectangle, and then cross check those adjacent
+     * vertices to see if any pair has a corresponding opposite vertex.  If there <b>is</b> an opposite
+     * vertex, then we know we have found a rectangle, so we then use that opposite vertex along with
+     * the original point/vertex to calculate the area of the rectangle.
      * @param pointArray
      * @return
      */
@@ -61,9 +66,12 @@ class RectangleHelper {
         }
         int smallestArea = Integer.MAX_VALUE;
         for (int i = 0; i < pointArray.length; i++) {
-            for (Integer eachY : xAdjacentMap.get(pointArray[i].getX())) {
-                for (Integer eachX : yAdjacentMap.get(pointArray[i].getY())) {
-                    if (yAdjacentMap.get(eachY).contains(eachX)) {
+            List<Integer> yList = xAdjacentMap.get(pointArray[i].getX());
+            for (Integer eachY : yList) {
+                List<Integer> xList = yAdjacentMap.get(pointArray[i].getY());
+                for (Integer eachX : xList) {
+                    // Check for opposite vertex
+                    if (yAdjacentMap.get(eachY).contains(eachX) && xAdjacentMap.get(eachX).contains(eachY)){
                         int area = area(pointArray[i], new IntegerPoint(eachX, eachY));
                         if (area < smallestArea && area > 0) {
                             smallestArea = area;
