@@ -36,6 +36,10 @@ public class SmallestRectangle {
         RectangleHelper rectangleHelper = new RectangleHelper();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void area() throws Exception {
         int actual;
@@ -56,6 +60,10 @@ public class SmallestRectangle {
         assertEquals(expected, actual);
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void testPoints() throws Exception {
         int count = 4;
@@ -87,29 +95,40 @@ public class SmallestRectangle {
         assertEquals(count, testPoints.length);
     }
 
-
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void smallestRect() throws Exception {
         int actual;
         int expected;
 
         expected = 1;
-        actual = RectangleHelper.smallestRectangle(RectangleHelper.testPoints(30, true));
+        actual = RectangleHelper.smallestRectangle(RectangleHelper.testPoints(50, true));
         assertEquals(expected, actual);
 
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void smallestRectFast() throws Exception {
         int actual;
         int expected;
 
         expected = 1;
-        actual = RectangleHelper.smallestRectangleFast(RectangleHelper.testPoints(1000, true));
+        actual = RectangleHelper.smallestRectangleFast(RectangleHelper.testPoints(10000, true));
         assertEquals(expected, actual);
     }
 
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void isRectangle() throws Exception {
         assertTrue(RectangleHelper.isRectangle(mSimpleTestPoints[0],mSimpleTestPoints[1],mSimpleTestPoints[2],mSimpleTestPoints[3]));
@@ -121,6 +140,10 @@ public class SmallestRectangle {
         );
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void oppositeCorner() throws Exception {
         IntegerPoint actual;
@@ -132,6 +155,10 @@ public class SmallestRectangle {
 
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void isAdjacent() throws Exception {
         boolean actual;
@@ -148,6 +175,10 @@ public class SmallestRectangle {
 
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void findXAdjacent() throws Exception {
         IntegerPoint actual = RectangleHelper.findXAdjacent(mSimpleTestPoints);
@@ -155,6 +186,10 @@ public class SmallestRectangle {
         assertThat(actual, is(expected));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void findYAdjacent() throws Exception {
         IntegerPoint actual = RectangleHelper.findYAdjacent(mSimpleTestPoints);
@@ -162,6 +197,10 @@ public class SmallestRectangle {
         assertThat(actual, is(expected));
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void populateMap() throws Exception {
         Map<Integer, List<Integer>> xAdjacentMap = new HashMap<>();
