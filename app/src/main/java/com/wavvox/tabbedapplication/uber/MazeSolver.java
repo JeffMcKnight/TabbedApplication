@@ -16,29 +16,34 @@ public class MazeSolver {
     }
 
     public int findShortestPath(){
-        Node currentNode = new Node(0, 0, null, 0);
+        Node current = new Node(0, 0, null, 0);
+        Node nextNode;
         Queue<Node> queue = new LinkedBlockingQueue<>();
-        queue.add(currentNode);
-        while (!queue.isEmpty() && !currentNode.isExit(maze)){
-            currentNode = queue.poll();
-            Node upNode = new Node(currentNode.row - 1, currentNode.col, currentNode, currentNode.distance + 1);
-            if (canGoToNext(currentNode, upNode)){
-                queue.add(upNode);
+        queue.add(current);
+        while (!queue.isEmpty() && !current.isExit(maze)){
+            current = queue.poll();
+            // Create node one space up from the current node
+            nextNode = new Node(current.row - 1, current.col, current, current.distance + 1);
+            if (canGoToNext(current, nextNode)){
+                queue.add(nextNode);
             }
-            Node downNode = new Node(currentNode.row + 1, currentNode.col, currentNode, currentNode.distance + 1);
-            if (canGoToNext(currentNode, downNode)){
-                queue.add(downNode);
+            // Create node one space down from the current node
+            nextNode = new Node(current.row + 1, current.col, current, current.distance + 1);
+            if (canGoToNext(current, nextNode)){
+                queue.add(nextNode);
             }
-            Node leftNode = new Node(currentNode.row , currentNode.col - 1, currentNode, currentNode.distance + 1);
-            if (canGoToNext(currentNode, leftNode)){
-                queue.add(leftNode);
+            // Create node one space left of the current node
+            nextNode = new Node(current.row , current.col - 1, current, current.distance + 1);
+            if (canGoToNext(current, nextNode)){
+                queue.add(nextNode);
             }
-            Node rightNode = new Node(currentNode.row , currentNode.col + 1, currentNode, currentNode.distance + 1);
-            if (canGoToNext(currentNode, rightNode)){
-                queue.add(rightNode);
+            // Create node one space right of the current node
+            nextNode = new Node(current.row , current.col + 1, current, current.distance + 1);
+            if (canGoToNext(current, nextNode)){
+                queue.add(nextNode);
             }
         }
-        return currentNode.distance;
+        return current.distance;
     }
 
     private boolean canGoToNext(Node node, Node nextNode) {

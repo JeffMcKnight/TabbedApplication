@@ -11,11 +11,18 @@ import static org.junit.Assert.assertTrue;
  * Created by jeffmcknight on 10/26/17.
  */
 public class MazeSolverTest {
+    /**
+     * A very small maze
+     */
     private static final int[][] maze = new int[][]
             {
                     {0, 0, 0},
                     {1, 1, 0}
             };
+
+    /**
+     * A larger maze with three possible paths
+     */
     private static final int[][] medMaze = new int[][]
             {
                     {0, 0, 0, 0, 1, 0, 0, 0},
@@ -25,6 +32,9 @@ public class MazeSolverTest {
                     {0, 0, 0, 0, 0, 0, 0, 0}
             };
 
+    /**
+     * Same as {@link #medMaze}, but with the path in the bottom row blocked
+     */
     private static final int[][] longerMaze = new int[][]
             {
                     {0, 0, 0, 0, 1, 0, 0, 0},
