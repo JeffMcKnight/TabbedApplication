@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
  * Created by jeffmcknight on 8/14/17.
  */
 
-public class SmallestRectangle {
+public class SmallestRectangleTest {
 
     private IntegerPoint[] mSimpleTestPoints;
 
@@ -131,7 +131,12 @@ public class SmallestRectangle {
      */
     @Test
     public void isRectangle() throws Exception {
-        assertTrue(RectangleHelper.isRectangle(mSimpleTestPoints[0],mSimpleTestPoints[1],mSimpleTestPoints[2],mSimpleTestPoints[3]));
+        assertTrue(RectangleHelper.isRectangle(
+                mSimpleTestPoints[0],
+                mSimpleTestPoints[1],
+                mSimpleTestPoints[2],
+                mSimpleTestPoints[3])
+        );
         assertFalse(RectangleHelper.isRectangle(
                 RectangleHelper.testPoint(0),
                 RectangleHelper.testPoint(1),
